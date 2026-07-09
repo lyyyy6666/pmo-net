@@ -1,0 +1,43 @@
+dataset: Beijing1718
+entrypoint: pmonet.experiments.train_wind_beijing
+data:
+  root_path: ./data/Beijing1718/processed
+  data_path: Beijing.npy
+  station_path: station.csv
+  adj_geo_path: final_adj.npy
+  graph_npz_path: graph_data.npz
+  feature_metadata_path: beijing_feature_columns.json
+  timestamps_path: timestamps.csv
+model:
+  hist_len: 24
+  seq_len: 24
+  label_len: 12
+  pred_len: 24
+  target_idx: 0
+  wind_u_idx: 4
+  wind_v_idx: 5
+  time_interval_hours: 3.0
+  d_model: 256
+  latent_dim: 64
+  xlstm_num_blocks: 3
+  channel_mixer_hidden: 512
+  dropout: 0.1
+  use_phy_ode: true
+  use_unk_ode: true
+  use_adaptive_gating: true
+  use_wind_advection: false
+loss:
+  beta: 0.05
+  lambda_nonnegative: 0.1
+  lambda_temporal_smooth: 0.01
+  use_observable_dyn_loss: false
+  lambda_observable_dyn: 0.0
+training:
+  batch_size: 32
+  epochs: 100
+  lr: 0.0003
+  patience: 10
+  device: cuda
+outputs:
+  save_dir: ./outputs/beijing
+  checkpoints: ./checkpoints/beijing
