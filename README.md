@@ -65,7 +65,6 @@ PYTHONPATH=src python tests/smoke_forward.py
 ```text
 configs/                 Dataset-specific configuration files
 data/                    Data format instructions
-docs/                    Reproducibility and audit notes
 results/                 Notes for result organization
 scripts/                 Training and evaluation shell scripts
 src/pmonet/              PMO-Net source package
